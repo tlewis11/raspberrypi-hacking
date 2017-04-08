@@ -1,0 +1,40 @@
+#---
+
+- hosts: all
+
+  vars:
+    ansible_ssh_private_key_file: "{{ lookup ('env', 'RPI_SSH_KEY') }}"
+    rpm_url: "https://pkg.jenkins.io/redhat-stable/jenkins-2.7.4-1.1.noarch.rpm"
+
+
+  tasks:
+
+
+    - name: install apache
+      apt:
+        name: apache2
+        state: present
+      become: true
+      become_user: root
+
+
+    - name: copy index.html
+      copy:
+        src: index.html
+        dest: /var/www/html/index.html
+        owner: pi
+        group: pi
+        
+      become: true
+      become_user: root
+
+
+
+    - name: start apache
+      service:
+        name: apache2
+        state: started
+      become: true
+      become_user: root
+
+
