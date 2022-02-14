@@ -1,3 +1,5 @@
+#!/bin/bash
+
 get_image(){
   local image_url='https://downloads.raspberrypi.org/raspbian_latest'
   wget $image_url
@@ -20,10 +22,6 @@ flash_image(){
   if [ "$answer" == "y" ] || [ "$answer" == "Y" ];
   then
     echo "copying $image_filename to $disk_path"
-    sudo dd bs=1m if=$image_filename of=$disk_path 
+    sudo dd bs=1M if=$image_filename of=$disk_path 
   fi
-
 }
-
-
-flash_image $1 $2
