@@ -1,13 +1,10 @@
 # a collection of setup scripts, plans, and utilties for the raspberry pi.
 
+# flash an image to your Raspberry pi's SD card.
 
-# Quick start
-Prereqs: 
-  - export RPI_SSH_KEY=<the/Path/toyour/sshPrivateKey>
-  - pip install ansible
+```
+flash.sh IMAGE_PATH DISK_PATH
+```
 
-1. git clone https://github.com/tlewis11/raspberrypi-hacking
-2. cd raspberrypi-hacking
-3. create a hosts file named hosts and enter the ip address of your pi in the hosts file.  Refer to [the example hosts file](hosts_file.example) for proper formatting. 
-4. ansible-playbook -i hosts rpi.yml
-
+IMAGE_PATH is the raspberry pi image you downloaded from the official (raspberrypi.com website)[https://www.raspberrypi.com/software/operating-systems/] 
+DISK_PATH is the linux path to your sd card that is mounted on your linux system
